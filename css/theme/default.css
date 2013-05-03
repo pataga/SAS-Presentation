@@ -1,39 +1,47 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 /**
  * Default theme for reveal.js.
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
+
 @font-face {
-  font-family: 'League Gothic';
-  src: url("../../lib/font/league_gothic-webfont.eot");
-  src: url("../../lib/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../lib/font/league_gothic-webfont.woff") format("woff"), url("../../lib/font/league_gothic-webfont.ttf") format("truetype"), url("../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/lobster.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/ubuntu.woff) format('woff');
+}
+
 
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #1c1e20;
-  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));
-  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background-color: #2b2b2b; }
+  background: #C8CBCE;
+  background: -moz-radial-gradient(center, circle cover, #FFFFFF 0%, #898989 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #FFFFFF), color-stop(100%, #898989));
+  background: -webkit-radial-gradient(center, circle cover, #FFFFFF 0%, #898989 100%);
+  background: -o-radial-gradient(center, circle cover, #FFFFFF 0%, #898989 100%);
+  background: -ms-radial-gradient(center, circle cover, #FFFFFF 0%, #898989 100%);
+  background: radial-gradient(center, circle cover, #FFFFFF 0%, #898989 100%);
+  background-color: #C1C1C1; }
 
 .reveal {
-  font-family: "Lato", sans-serif;
-  font-size: 36px;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
   font-weight: 200;
   letter-spacing: -0.02em;
-  color: #eeeeee; }
+  color: #222; }
 
 ::selection {
   color: white;
-  background: #ff5e99;
+  background: #6FDBEE;
   text-shadow: none; }
 
 /*********************************************
@@ -46,15 +54,31 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #eeeeee;
-  font-family: "League Gothic", Impact, sans-serif;
+  color: #222;
+  font-family: "Ubuntu", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); }
+  text-shadow: 0px 0px 6px rgba(255,255,255, 0.2); }
 
 .reveal h1 {
-  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15); }
+  font-family: 'Lobster', sans-serif;
+  color: #222;
+  padding: 0 0 45px;
+  text-align: center;
+  text-shadow: 3px 3px #999;
+  font-size: 107px;
+  font-weight: 400;
+}
+
+.reveal h1 span {
+  color: rgba(11, 117, 178, 1.0);
+  text-shadow: 3px 3px #333333;
+}
+
+.reveal h3.title {
+  font-size: 45px;
+  padding: 0 0 45px;  
+}
 
 /*********************************************
  * LINKS
