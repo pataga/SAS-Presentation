@@ -1,0 +1,1980 @@
+/* =======================================================================
+
+main.css - stylesheet for SAS and SAS-Notification Center with all features
+
+Licensed under The Apache License
+- Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+- https://github.com/pataga/SAS
+- Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+- Author:  Gabriel Wanzek
+- Version: 3.2
+========================================================================== 
+
+Inhaltsverzeichnis:
+
+    1. Schriftarten (Lobster (>Logo), Ubuntu (>content), Ubuntu Bold (>headings), Ubuntu Mono (>code))
+    2. simple resets for cross Browser -> another resets done by normalize.css
+    3. Top [Logo + Userpanel]
+    4. Layout    
+        4.0 Hauptnavigation und Wrapper
+        4.1 Layout: Boxensystem + Overview-Boxen
+        4.2 Layout: Sidebarnavigation + Content
+        4.3 Layout: Footer
+    5. Template-Features
+        5.1 Text, Links, Placeholder, Überschriften, Listen, code/pre, etc.
+        5.2 Tabellen, Formulare, Inputs, diverse scrollbare Container
+        5.3 [VERWORFEN] CSS3 animierte Ladebalken -> ersetzt durch -> HTML5 "<progress>" und "<meter>"
+        5.4 Buttonstlyes für submit, button and links und Submit der aussieht wie ein Link
+        5.5 Tooltips (CSS3, funktioniert auch mit IE) in 3 Variationen
+        5.6 Template Features: Statusmeldungen - autom. breite (kominierbar mix box-system)
+        5.7 jQuery Spoiler (nur ein Spoiler pro Seite möglich)
+        5.8 Javascript Tabs (max. 6 Tabs)
+    6. Kein Javascript aktiv -> Meldung über dem eigentl. Pagecontent
+    7. Helper classes from HTML5Boilerplate 
+    8. [EXTRA] Custom Styles für Module
+    9. [EXTRA] Installationsroutine
+
+========================================================================== */
+
+
+/* =======================================================================
+1. Schriftarten
+========================================================================== */
+
+@font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/lobster.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/ubuntu-400.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url(fonts/ubuntu-700.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/ubuntu-mono.woff) format('woff');
+}
+
+/* ==========================================================================
+2. simple resets
+========================================================================== */
+
+html, button, input, select, textarea {
+    color: #222;
+}
+
+body {
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #646464;
+    text-align: center;
+    outline: none !important;
+}
+
+/* ==========================================================================
+3. Top [Logo + Userpanel]
+========================================================================== */
+
+.top {
+    width: 980px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+}
+
+.top .logo {
+    width: 635px;
+    float: left;
+}
+
+.top .logo h1 {
+    color: #222;
+    margin-top: -5px;
+    text-align: left;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ccc;
+    font-size: 46px;
+    font-weight: 400;
+}
+
+.top .logo h1 span {
+    color: rgba(11, 117, 178, 1.0);
+    text-shadow: 1px 1px #333333;
+}
+
+.top .logo a:hover {
+    text-decoration: none !important;
+}
+
+.top .usermenu {
+    top: 0;
+    text-align: left;
+    font-size: 1em;
+    margin-top: -15px;
+    line-height: 1.7;
+    width: 325px;
+    height: 60px;
+    float: right;
+    background-color: #DDD;
+    padding: 10px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    outline: none;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.top .usermenu h3 {
+    text-align: left;
+    float: right;
+}
+
+.top .usermenu a {
+    text-decoration: none;
+    color: #222;
+}
+
+.top .usermenu a:hover {
+    text-decoration: underline;
+    color: #0b75b2;
+}
+
+.top .usermenu img {
+    text-align: right;
+    float: right;
+}
+
+/* ==========================================================================
+4.0 Hauptnavigation (und Wrapper)
+========================================================================== */
+
+#wrapper {
+    text-align: left;
+    width: 980px;
+    margin: 0 auto;
+}
+
+#nav {
+    padding: 0;
+    height: 30px;
+    width: 980px;
+    font-size: 1.2em;
+    font-weight: 700;
+
+}
+
+#nav ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    float: left;
+    background-color: #333;
+    box-shadow: 0 -1px 3px #888;
+
+}
+
+#nav ul li {
+    display: inline;
+}
+
+#nav ul li a {
+    display: block;
+    float: left;
+    height: 37px;
+    width: 98px;
+    font-weight: bold;
+    line-height: 37px;
+    text-decoration: none;
+    padding: 0;
+    text-align: center;
+    outline: none;
+    color: #fff;
+}
+
+#nav ul li a:visited {
+    color: white;
+}
+
+#nav ul li a:hover {
+    color: #fff;
+    background-color: #0b75b2;
+    outline: none;
+    -webkit-box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
+    box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
+}
+
+#nav ul li a.aktiv {
+    color: #fff;
+    background-color: #0b75b2;
+    outline: none;
+    -webkit-box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
+    box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
+}
+
+#nav li a, #nav li a:hover {
+    -webkit-transition: background .25s ease-out;
+       -moz-transition: background .25s ease-out;
+        -ms-transition: background .25s ease-out;
+         -o-transition: background .25s ease-out;
+            transition: background .25s ease-out;
+}
+
+/* ==========================================================================
+4.1 Layout: Boxensystem + Overview-Boxen
+========================================================================== */
+
+.halbe-box          { width: 47.5%; }
+.drittel-box        { width: 30.5%; }
+.viertel-box        { width: 21.9%; }
+.fuenftel-box       { width: 16.7%; }
+.zweidrittel-box    { width: 65.3%; }
+.dreiviertel-box    { width: 74.0%; }
+.zweifuenftel-box   { width: 37.2%; }
+.dreifuenftel-box   { width: 58.0%; }
+.vierfuenftel-box   { width: 79.0%; }
+
+.halbe-box, .drittel-box, .zweidrittel-box, .viertel-box, .dreiviertel-box, .fuenftel-box, .zweifuenftel-box, .dreifuenftel-box, .vierfuenftel-box {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    float: left;
+    margin-right: 4%;
+    margin-bottom: 15px;
+}
+
+.lastbox {
+    margin-right: 0 !important;
+}
+
+.boxcenter {
+    text-align: center !important;
+}
+
+.box-demo {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.25em;
+    background: rgba(17, 117, 178, 0.5);
+    border-radius: 2px;
+    position: relative;
+    height: 40px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.boxitem {
+    background-color: #222;
+    color:#fff;
+    height: 100px;
+    box-shadow: 0 8px 6px -6px #000;
+}
+
+.boxitem:hover {
+    /*box-shadow: inset 0 0 3px 5px #fff;*/
+    border-top-left-radius: 38px;
+    border-bottom-right-radius: 38px;
+}
+
+.boxitem {
+    -webkit-transition: border-radius .2s ease-in-out;
+    -moz-transition: border-radius .2s ease-in-out;
+    -ms-transition: border-radius .2s ease-in-out;
+    -o-transition: border-radius .2s ease-in-out;
+    transition: border-radius .2s ease-in-out;
+
+ }
+
+.boxitem:active {
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+.boxitem p {
+    text-align: center;
+    vertical-align: middle;
+    margin: 40px auto;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.boxitem p.long {
+    text-align: center;
+    vertical-align: middle;
+    margin: 25px auto;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+4.2 Layout: Sidebar + Content
+========================================================================== */
+
+#main {
+    width: 980px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#sidebar {
+    float: left;
+    width: 190px;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#sidebar li {
+    margin: 0;
+    padding: 5px;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+#sidebar li a {
+    display: block;
+    height: 2em;
+    font-size: 1em;
+    line-height: 2;
+    text-decoration: none;
+    color: #222;
+    padding-left: 5px;
+    outline: none;
+}
+
+#sidebar li.last {
+    border-bottom: none;
+}
+
+#sidebar li li span {
+}
+
+#sidebar li li a {
+    padding: 0;
+}
+
+#sidebar li:hover {
+    background: #eee;
+    -webkit-box-shadow: inset 0 0 3px #ccc;
+    box-shadow: inset 0 0 3px #ccc;
+}
+
+#sidebar li.aktiv {
+    background: #eee;
+    font-weight: 700;
+    -webkit-box-shadow: inset 0 0 3px #ccc;
+    box-shadow: inset 0 0 3px #ccc;
+}
+
+#sidebar li, #sidebar li:hover {
+    -webkit-transition: color .25s ease-out;
+    -moz-transition: color .25s ease-out;
+    -ms-transition: color .25s ease-out;
+    -o-transition: color .25s ease-out;
+    transition: color .25s ease-out;
+}
+
+#content {
+    float: right;
+    width: 770px;
+    padding: 0 0 15px 10px;
+}
+
+/* ==========================================================================
+4.3 Layout: Footer
+========================================================================== */
+#footer {
+    clear: right;
+    max-width: 960px;
+    margin: 5px auto;
+    background: #eee;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.05em;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    border-radius: 2px;
+}
+
+#footer a {
+    margin-right: 25px;
+    text-decoration: none;
+    color: #aaa;
+}
+
+#footer a.last {
+    margin-right: 0;
+}
+
+#footer a:hover {
+    color: #0b75b2;
+}
+
+#footer a, #footer a:hover {
+    -webkit-transition: color 0.35s ease-in-out;
+    -moz-transition: color 0.35s ease-in-out;
+    -o-transition: color 0.35s ease-in-out;
+    -ms-transition: color 0.35s ease-in-out;
+    transition: color 0.35s ease-in-out;
+}
+
+/* --- LOADTIME --- */
+
+.loadtime {
+    float:right;
+    text-align: right;
+    color: #aaa;
+    border-radius: 2px;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0 7px 0 0;
+}
+
+.memory {
+    float:left;
+    text-align: left;
+    color: #aaa;
+    border-radius: 2px;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0 7px 0 0;
+}
+
+/* ==========================================================================
+5.1 Template-Features: Text, Links, Placeholder, Überschriften, Listen, code/pre, etc.
+========================================================================== */
+
+::-moz-selection {
+    background: #2d7e99;
+    color: #fff;
+}
+
+::selection {
+    background: #2d7e99;
+    color: #fff;
+}
+
+::-webkit-input-placeholder {
+    color: #AAA !important;
+    font-style: italic !important;
+}
+
+:-moz-placeholder {
+    color: #AAA !important;
+    font-style: italic !important;
+}
+
+a::-moz-focus-inner{
+      border: 0px;
+}
+
+input[type="button"]::-moz-focus-inner{
+    border: 0px;
+}
+
+input[type="submit"]::-moz-focus-inner{
+    border: 0px;
+}
+
+:focus, :active {
+    outline:none;
+}
+
+::-moz-focus-inner {
+    border:0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu Bold', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* H1 nicht verwenden! stattdessen h1.normal */
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h6 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h1.normal {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+a {
+    color: #0b75b2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0b75b2;
+    text-decoration: underline;
+}
+
+span.aktiv {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #079700;
+    padding: 3px 7px;
+    border-radius: 2px;
+}
+
+span.inaktiv {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #962301;
+    padding: 3px 7px;
+    border-radius: 2px;
+}
+
+span.notaviable {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #757575;
+    padding: 3px 7px;
+    border-radius: 2px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+ul.square {
+    list-style-type: square;
+}
+
+ul.log {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.log li {
+    border-bottom: 1px solid #ccc;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+    line-height: 1.7;
+}
+
+sup {
+    position: relative;
+    top: 1px;
+    vertical-align: top;
+    font-size: 80%;
+}
+
+code {
+    padding: 0;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+}
+
+code.fancy {
+    background: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border: 1px solid #ddd;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+}
+
+code.keyboard {
+    border: 1px solid #222;
+    padding: 1px 3px;
+    border-radius: 2px;
+    background-color: #444;
+    color: #eee;
+}
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important;
+    white-space: pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    margin: 0 0 0 0;
+    padding: 5px 5px 3px 5px;
+    background: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+}
+
+pre.simple {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important;
+    white-space: pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ==========================================================================
+5.2 Template-Features: Tabellen, Formulare, Inputs, diverse scrollbare Container;
+========================================================================== */
+
+#main table {
+    border-top: 1px solid #ddd;
+    max-width: 745px;
+}
+
+#main table tr td {
+    background: #f6f6f6;
+    padding: 0 20px;
+    height: 29px;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+}
+
+#main table tr th {
+    background: #f6f6f6;
+    padding: 0 20px;
+    height: 29px;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    font-weight: 700;
+}
+
+#main table tr.odd td {
+    background: #fbfbfb;
+}
+
+#main table .action {
+    text-align: right;
+    padding: 0 20px 0 10px;
+}
+
+#main table tr:hover td {
+    background: #EBFCFF;
+}
+
+#main table tr .action a {
+    margin: 0 0 0 10px;
+    text-decoration: none;
+    color: #9b9b9b;
+}
+
+#main table tr .action input[type=submit] {
+    background: none;
+    border: none;
+    color: #9b9b9b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#main table tr:hover .action .edit {
+    color: #c5a059;
+}
+
+#main table tr:hover .action .delete {
+    color: #a02b2b;
+}
+
+#main table tr:hover .action .view {
+    color: #55a34a;
+}
+
+#main table tr:hover .action a:hover, #main table tr:hover .action input[type=submit]:hover {
+    text-decoration: underline;
+}
+
+#main table tr td span.ok  {
+    background: #91E87B;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+#main table tr td span.red {
+    background: #EC9797;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+#main table tr td span.unknown {
+    background: #B3B3B3;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+/*** --- SORT. TABELLE --- ***/
+
+#main table.s th:hover {
+    background: #BCE7FF;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#main table.s th .action a {
+    margin: 0 0 0 10px;
+    text-decoration: none;
+    color: #9b9b9b;
+}
+
+#main table.s th:after {
+    content: " \2195";
+}
+
+/*** --- Unsichtbare Tabelle --- ***/
+
+#main table.inv {
+    border:none;
+    background: none;
+    max-width: 745px;
+}
+
+#main table.inv tr td {
+    border:none;
+    background: none;
+    padding: 0 20px;
+    height: 29px;
+    line-height: 1.5;
+}
+
+#main table.inv tr th {
+    background: none;
+    padding: 0 20px;
+    height: 29px;
+    line-height: 1.5;
+    border:none;
+    font-weight: 700;
+}
+
+/*** --- Formulare --- ***/
+
+#main fieldset {
+    border: 1px solid #ddd;
+    padding: 19px;
+    margin: 0 0 20px 0;
+    background: #fbfbfb;
+}
+
+#main fieldset fieldset{ /* Fieldset in Fieldset */
+    border: 1px solid #A1A1A1;
+    padding: 15px;
+    margin: 0 0 10px 0;
+    background: #fefefe;
+}
+
+#main fieldset p {
+    margin: 0 0 14px 0;
+    float: left;
+    width: 100%;
+}
+
+#main fieldset label {
+    display: block;
+    width: 100%;
+    margin: 0 0 7px 0;
+    line-height: 12px;
+}
+
+#main fieldset label.inline {
+    display: inline;
+    padding: 2px 4px;
+    line-height: 2.0;
+}
+
+#main fieldset .text-long {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 264px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-long-ext {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 264px;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-medlong {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 200px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-medium {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 124px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-small {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 44px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-long:focus,
+#main fieldset .text-medium:focus,
+#main fieldset .text-small:focus,
+#main fieldset .text-medlong:focus,
+#main fieldset .text-long-ext:focus,
+#main fieldset textarea:focus {
+    background: #EAF4FF no-repeat left top;
+}
+
+#main fieldset textarea {
+    border: 1px solid #ddd;
+    background: #fff no-repeat left top;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 400px;
+    float: left;
+    margin: 0 10px 0 0;
+    height: 148px;
+    overflow: hidden;
+    resize: vertical;
+}
+
+#main textarea#console {
+    background: #fff;
+    font: 13px "Ubuntu Mono", monospace;
+    line-height: 1.2;
+    color: #000;
+    padding: 5px 7px; 
+    width: 630px;
+    float: left;
+    margin: 3px 10px 0 0;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: pre;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset .a2_module {
+    background: #fff;
+    font: 1em "Ubuntu Mono", monospace;
+    color: #000;
+    padding: 5px 7px;
+    width: 340px;
+    float: left;
+    margin: 2px;
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset .listbox {
+    background: #fff;
+    font: 1em "Ubuntu Mono", monospace;
+    color: #000;
+    padding: 5px 7px;
+    width: 250px;
+    float: left;
+    margin: 2px;
+    min-height: 75px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset .a2_module_big {
+    background: #fff;
+    font: 1em "Ubuntu Mono", monospace;
+    color: #000;
+    padding: 5px 7px;
+    float: left;
+    margin: 7px;
+    width: 340px;
+    height: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset .license {
+    background: #fff;
+    font: 12px Courier, monospace;
+    color: #000;
+    padding: 15px 7px;
+    float: left;
+    margin: 7px;
+    width: 95%;
+    white-space: pre;
+    height: 185px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset .listbox_fss {
+    background: #fff;
+    font: 1em "Ubuntu Mono", monospace;
+    color: #000;
+    padding: 5px 7px;
+    width: 140px;
+    float: left;
+    margin: 2px;
+    min-height: 75px;
+    max-height: 330px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset textarea#phpinfotxt {
+    background: #fff;
+    font: 1em "Ubuntu Mono", monospace;
+    color: #000;
+    padding: 5px 7px;
+    width: 770px;
+    float: left;
+    margin: 3px 10px 0 0;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: pre;
+    box-shadow: 1px 2px 5px #ccc;
+    resize: vertical;
+}
+
+#main fieldset select {
+   background: transparent;
+   min-width: 100px;
+   padding: 2px;
+   font-size: 14px;
+   line-height: 1.0;
+   border: 1px solid #777;
+   border-radius: 2px;
+   height: 27px;
+   margin: 2px 0;
+}
+
+#main fieldset select.multi {
+    width: auto;
+    padding: 10px;
+    height: auto; 
+    background: #fff;
+}
+
+#main fieldset select.shadow {
+    box-shadow: 1px 1px 6px #ccc;
+}
+
+#main fieldset legend {
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0;
+    color: rgb(100, 100, 100);
+}
+
+#main fieldset .scroll {
+    min-height: 100px;
+    max-height: 500px;
+    max-width: 700px;
+    overflow:scroll;
+    scrollbar-3dlight-color:#FFFFFF;
+    scrollbar-arrow-color:#000000;
+    scrollbar-base-color:#FF9999;
+    scrollbar-darkshadow-color:#000000;
+    scrollbar-face-color:#000000;
+    scrollbar-highlight-color:#000000;
+    scrollbar-shadow-color:#0033CC;
+}
+
+/* ==========================================================================
+5.3 Template Features: LADEBALKEN - Wurden ersetzt durch das HTML5-tag <meter>
+========================================================================== */
+
+/* ====== 
+
+.progress-bar {
+    background-color: #eee;
+    height: 25px;
+    padding: 5px;
+    width: 350px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 5px #ccc inset, 0 1px 0 #eee;
+    box-shadow: 0 1px 5px #ccc inset, 0 1px 0 #eee;           
+}
+
+.progress-bar span {
+    display: inline-block;
+    height: 100%;
+    background-color: #777;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    -webkit-transition: width .4s ease-in-out;
+    -moz-transition: width .4s ease-in-out;
+    -ms-transition: width .4s ease-in-out;
+    -o-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;      
+}
+
+.blue span {
+    background-color: #34c2e3;   
+}
+
+.orange span {
+    background-color: #fecf23;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fecf23), to(#fd9215));
+    background-image: -webkit-linear-gradient(top, #fecf23, #fd9215);
+    background-image: -moz-linear-gradient(top, #fecf23, #fd9215);
+    background-image: -ms-linear-gradient(top, #fecf23, #fd9215);
+    background-image: -o-linear-gradient(top, #fecf23, #fd9215);
+    background-image: linear-gradient(top, #fecf23, #fd9215);  
+}   
+
+.green span {
+    background-color: #a5df41;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a5df41), to(#4ca916));
+    background-image: -webkit-linear-gradient(top, #a5df41, #4ca916);
+    background-image: -moz-linear-gradient(top, #a5df41, #4ca916);
+    background-image: -ms-linear-gradient(top, #a5df41, #4ca916);
+    background-image: -o-linear-gradient(top, #a5df41, #4ca916);
+    background-image: linear-gradient(top, #a5df41, #4ca916);  
+}       
+
+.red span {
+    background-color: #E73A3F;
+    background-image: -webkit-linear-gradient(top, #E73A3F, #A31D20);
+    background-image: -moz-linear-gradient(top, #E73A3F, #A31D20);
+    background-image: -o-linear-gradient(top, #E73A3F, #A31D20);
+    background-image: -ms-linear-gradient(top, #E73A3F, #A31D20);
+    background-image: linear-gradient(top, #E73A3F, #A31D20);  
+} 
+
+.stripes span {
+    -webkit-background-size: 30px 30px;
+    -moz-background-size: 30px 30px;
+    background-size: 30px 30px;         
+    background-image: -webkit-gradient(linear, left top, right bottom,
+        color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+        color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+        color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+        to(transparent));
+    background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+        transparent 75%, transparent);
+    background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+        transparent 75%, transparent);
+    background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+        transparent 75%, transparent);
+    background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+        transparent 75%, transparent);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+        transparent 75%, transparent);            
+
+    -webkit-animation: animate-stripes 3s linear infinite;
+    -moz-animation: animate-stripes 3s linear infinite;             
+}
+
+@-webkit-keyframes animate-stripes { 
+    0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+
+
+@-moz-keyframes animate-stripes {
+    0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+*/
+
+/* ==========================================================================
+5.4 Template Features: BUTTONS FÜR SUBMIT, BUTTON AND LINKS
+========================================================================== */
+.button {
+    display: inline-block;
+    text-decoration: none;
+    font: bold 12px/12px Arial;
+    padding: 8px 11px;
+    color: #555;
+    border: 1px solid #dedede;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.button.white {
+    background: #f5f5f5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f0f0f0)); /*  WebKit */
+    background: -moz-linear-gradient(top, #f9f9f9, #f0f0f0);
+    border-color: #dedede #d8d8d8 #d3d3d3;
+    color: #555;
+    text-shadow: 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
+    -moz-box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
+    box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
+    text-decoration: none;
+}
+
+.button.white:hover {
+    background: #f4f4f4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#f8f8f8)); /*  WebKit */
+    background: -moz-linear-gradient(top, #efefef, #f8f8f8);
+    border-color: #c7c7c7 #c3c3c3 #bebebe;
+    text-shadow: 0 1px 0 #fdfdfd;
+    -webkit-box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
+    -moz-box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
+    box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
+    text-decoration: none;
+}
+
+.button.grey {
+    background: #bdbdbd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#cacaca), to(#aeaeae)); /*  WebKit */
+    background: -moz-linear-gradient(top, #cacaca, #aeaeae);
+    border-color: #b5b5b5 #a1a1a1 #8f8f8f;
+    color: #555;
+    text-shadow: 0 1px 0 #d4d4d4;
+    -webkit-box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
+    -moz-box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
+    box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
+    text-decoration: none;
+}
+
+.button.grey:hover {
+    background: #c2c2c2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#bcbcbc), to(#c2c2c2)); /*  WebKit */
+    background: -moz-linear-gradient(top, #bcbcbc, #c2c2c2);
+    border-color: #989898 #8e8e8e #878787;
+    text-shadow: 0 1px 0 #dadada;
+    -webkit-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
+    -moz-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
+    box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
+    text-decoration: none;
+}
+
+.button.pink {
+    background: #f67689;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f78297), to(#f56778)); /*  WebKit */
+    background: -moz-linear-gradient(top, #f78297, #f56778);
+    border-color: #df6f8b #da5f75 #d55061;
+    color: #913944;
+    text-shadow: 0 1px 0 #f89ca9;
+    -webkit-box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
+    -moz-box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
+    box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
+    text-decoration: none;
+}
+
+.button.pink:hover {
+    background: #f67c90;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f56c7e), to(#f78297)); /*  WebKit */
+    background: -moz-linear-gradient(top, #f56c7e, #f78297);
+    border-color: #c36079 #c25669 #c14e5c;
+    text-shadow: 0 1px 0 #f9a6b4;
+    -webkit-box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
+    -moz-box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
+    box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
+    text-decoration: none;
+}
+
+.button.orange {
+    background: #fecc5f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#feda71), to(#febb4a)); /*  WebKit */
+    background: -moz-linear-gradient(top, #feda71, #febb4a);
+    border-color: #f5b74e #e5a73e #d6982f;
+    color: #996633;
+    text-shadow: 0 1px 0 #fedd9b;
+    -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
+    -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
+    text-decoration: none;
+}
+
+.button.orange:hover {
+    background: #fecb5e;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fec354), to(#fecd61)); /*  WebKit */
+    background: -moz-linear-gradient(top, #fec354, #fecd61);
+    border-color: #d29a3a #cc9436 #c89133;
+    text-shadow: 0 1px 0 #fee1a0;
+    -webkit-box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
+    -moz-box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
+    box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
+    text-decoration: none;
+}
+
+.button.green {
+    background: #b7d770;
+    background: -webkit-gradient(linear, left top, left bottom, from(#cae285), to(#9fcb57)); /*  WebKit */
+    background: -moz-linear-gradient(top, #cae285, #9fcb57);
+    border-color: #adc671 #98b65b #87aa4a;
+    color: #5d7731;
+    text-shadow: 0 1px 0 #cfe5a4;
+    -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
+    -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
+    text-decoration: none;
+}
+
+.button.green:hover {
+    background: #b9d972;
+    background: -webkit-gradient(linear, left top, left bottom, from(#b8d872), to(#b9d972)); /*  WebKit */
+    background: -moz-linear-gradient(top, #b8d872, #b9d972);
+    border-color: #8bb14d #83a648 #7d9e45;
+    text-shadow: 0 1px 0 #d5e8aa;
+    -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
+    -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
+    text-decoration: none;
+}
+
+.button.blue {
+    background: #92dbf6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#abe4f8), to(#6fcef3)); /*  WebKit */
+    background: -moz-linear-gradient(top, #abe4f8, #6fcef3);
+    border-color: #8dc5da #76b7cf #63abc7;
+    color: #42788e;
+    text-shadow: 0 1px 0 #b6e6f9;
+    -webkit-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
+    -moz-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
+    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
+    text-decoration: none;
+}
+
+.button.blue:hover {
+    background: #92dbf6;
+    border-color: #7caec0 #68a3ba #5a9cb5;
+    text-shadow: 0 1px 0 #bee9fa;
+    -webkit-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
+    -moz-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
+    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
+    text-decoration: none;
+}
+
+.button.purple {
+    background: #dfaeda;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e8c4e4), to(#d494ce)); /*  WebKit */
+    background: -moz-linear-gradient(top, #e8c4e4, #d494ce);
+    border-color: #bc9db9 #ad89aa #a1799d;
+    color: #7b5777;
+    text-shadow: 0 1px 0 #eacae6;
+    -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
+    -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
+    text-decoration: none;
+}
+
+.button.purple:hover {
+    background: #e0b1db;
+    background: -webkit-gradient(linear, left top, left bottom, from(#deabd9), to(#e0b1db)); /*  WebKit */
+    background: -moz-linear-gradient(top, #deabd9, #e0b1db);
+    border-color: #a482a0 #9b7897 #947090;
+    text-shadow: 0 1px 0 #ecd0e9;
+    -webkit-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
+    -moz-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
+    box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
+    text-decoration: none;
+}
+
+.button.teal {
+    background: #9cedef;
+    background: -webkit-gradient(linear, left top, left bottom, from(#b7f2f4), to(#7ce7ea)); /*  WebKit */
+    background: -moz-linear-gradient(top, #b7f2f4, #7ce7ea);
+    border-color: #90c6c8 #78bdc0 #65b6ba;
+    color: #437b7d;
+    text-shadow: 0 1px 0 #bef3f5;
+    -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
+    -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
+    text-decoration: none;
+}
+
+.button.teal:hover {
+    background: #9fedf0;
+    border-color: #7db9bb #6bb2b5 #5dacaf;
+    text-shadow: 0 1px 0 #c5f4f6;
+    -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
+    -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
+    text-decoration: none;
+}
+
+.button.darkblue {
+    background: #a5b8c6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#becbd6), to(#88a1b4)); /*  WebKit */
+    background: -moz-linear-gradient(top, #becbd6, #88a1b4);
+    border-color: #a2afb8 #8696a1 #6f818f;
+    color: #515f6a;
+    text-shadow: 0 1px 0 #c4d0d9;
+    -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
+    -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
+    text-decoration: none;
+}
+
+.button.darkblue:hover {
+    background: #adbfcb;
+    border-color: #8996a0 #798791 #6c7a85;
+    text-shadow: 0 1px 0 #ced9e0;
+    -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
+    -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
+    text-decoration: none;
+}
+
+.button.black {
+    background: #525252;
+    background: -webkit-gradient(linear, left top, left bottom, from(#5e5e5e), to(#434343)); /*  WebKit */
+    background: -moz-linear-gradient(top, #5e5e5e, #434343);
+    border-color: #4c4c4c #313131 #1f1f1f;
+    color: #fff;
+    text-shadow: 0 1px 0 #2e2e2e;
+    -webkit-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
+    -moz-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
+    box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
+    text-decoration: none;
+}
+
+.button.black:hover {
+    background: #5a5a5a;
+    border-color: #2c2c2c #1c1c1c #101010;
+    text-shadow: 0 1px 0 #363636;
+    -webkit-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+    -moz-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+    box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+    text-decoration: none;
+}
+
+.button.white:active, .button.grey:active, .button.pink:active, 
+.button.orange:active, .button.green:active, .button.blue:active, 
+.button.purple:active, .button.teal:active, .button.darkblue:active, .button.black:active {
+    box-shadow: inset 0 0 6px 1px #999;
+}
+
+/* Submit der aussieht wie ein Link */
+
+input[type=submit].invs {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: #0b75b2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type=submit].invs:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+5.5 Template Features: Tooltips (CSS3, abwärtskompatibel) 
+========================================================================== */
+
+.tooltip {
+    position: relative;
+    text-decoration: none !important;
+    border-bottom: 1px dotted #0b75b2;
+    cursor: help;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: #0b75b2;
+    vertical-align: middle;
+}
+
+.tooltip span {
+    visibility: hidden;
+    color: #fff;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    z-index: 999;
+    width: 210px;
+    margin-left: -120px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 2px solid #222;
+    background-color: #ddd;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip:hover span {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    opacity: 0.90;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip2 {
+    position: relative;
+    text-decoration: none !important;
+    cursor: help;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: #0b75b2;
+}
+
+.tooltip2 span {
+    visibility: hidden;
+    color: #fff;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    z-index: 999;
+    width: 130px;
+    margin-left: -30px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 2px solid #222;
+    background-color: #ddd;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip2:hover span {
+    visibility: visible;
+    opacity: 0.90;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip3 {
+    position: relative;
+    text-decoration: none !important;
+    border-bottom: 1px dotted #0b75b2;
+    cursor: help;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: #0b75b2;
+}
+
+.tooltip3 span {
+    visibility: hidden;
+    color: #fff;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    z-index: 999;
+    width: 350px;
+    margin-left: -120px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 2px solid #222;
+    background-color: #ddd;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip3:hover span {
+    visibility: visible;
+    opacity: 0.90;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+/* ==========================================================================
+5.6 Template Features: Statusmeldungen - autom. breite (kominierbar mix box-system)
+========================================================================== */
+
+span.error, span.info, span.alert, span.success {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+span.error {
+    border-color: #ffcfce;
+    background: #ffdfdf
+}
+
+span.info {
+    border-color: #d4ecf0;
+    background: #e0f2f5
+}
+
+span.alert {
+    border-color: #efeabf;
+    background: #f6f3da
+}
+
+span.success {
+    border-color: #c7f5ce;
+    background: #d6f7db
+}
+
+#notify {
+    position: relative;
+    z-index: 10000;
+    display: inherit;
+}
+.notify_bubble {
+    position:absolute;
+    top: -8px;
+    right: -10px;
+    padding: 0px 2px 0px 2px;
+    background-color: #0b75b2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.75em;
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px #888;
+}
+
+/* ==========================================================================
+5.7 jQuery Spoiler (nur ein Spoiler pro Seite möglich)
+========================================================================== */
+
+.spoiler_div {
+    height: auto;
+    background-color: #F0F0F0;
+    padding: 15px;
+    margin-top: 8px;
+    border-top: 3px solid #0b75b2;
+    border-bottom: 3px solid #0b75b2;
+}
+
+.spoiler_div.console {
+    background-color: #222;
+    color: #fff;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+}
+
+span.show_hide {
+    padding: 3px 6px;
+    border: 1px dotted #6D6D6D;
+    cursor: pointer;
+    color: #0b75b2;
+    text-decoration: none;
+}
+
+.spoiler_div span.show_hide {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    color: #0b75b2;
+    text-decoration: none;
+}
+
+.spoiler_div span.show_hide:hover, span.show_hide:hover {
+    text-decoration: underline;
+}
+
+.show_hide {
+    display: none;
+}
+
+/* ==========================================================================
+5.8 Javascript Tabs (max 6 Tabs)
+========================================================================== */
+
+.tabnav {
+    margin: 10px 0;
+}
+
+.tabnav .tabl {
+    list-style: none;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 1px;
+}
+
+.tabnav .tabl li {
+    float: left;
+    background-color: #0b75b2;
+    border: 1px solid #e1e1e1;
+    padding: 5px ! important;
+    cursor: pointer;
+    border-bottom: none;
+    margin-right: 10px;
+    font-size: 1.0em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.tabnav .tabl li, .tabnav .tabl li:hover {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.tabnav .tabl li:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+.tabnav .tabl .selected {
+    background-color: #fff;
+    color: #393939;
+}
+
+#tabcontent {
+    padding: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 10px;
+    border: 1px solid #e1e1e1;
+    width: 93%;
+}
+
+/* ==========================================================================
+6. Kein Javascript aktiv -> Meldung über dem eig. Pagecontent
+========================================================================== */
+
+#nojsactive {
+    background-image: -webkit-linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    background-size: 50px 50px;
+    position: relative;
+    height: 50px;
+    vertical-align: middle;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #A90505;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 14px;
+    -webkit-box-shadow: 0 0 5px black;
+    box-shadow: 0 0 5px black;
+    -webkit-animation: animate-streifen 5s linear infinite;
+    -moz-animation: animate-streifen 5s linear infinite;
+    -ms-animation: animate-streifen 5s linear infinite;
+    -o-animation: animate-streifen 5s linear infinite;
+    animation: animate-streifen 5s linear infinite;
+}
+
+#nojsactive a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dotted #fff;
+}
+
+#nojsactive a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+@-webkit-keyframes animate-streifen {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+@-moz-keyframes animate-streifen  {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+@-o-keyframes animate-streifen  {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+@keyframes animate-streifen  {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+
+/* ==========================================================================
+7. Helper classes from HTML5Boilerplate
+========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+8. [EXTRA] Custom Styles für Module
+========================================================================== */
+
+/* --- PHPINFO --- */
+
+iframe.phpinfo {
+    width: 770px;
+    min-height: 600px;
+    max-height: 1200px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* ==========================================================================
+9. [EXTRA] Installationsroutine
+========================================================================== */
+
+.logoinstall {
+    margin: 20px auto;
+}
+
+.logoinstall h1 {
+    color: #222;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ccc;
+    font-size: 46px;
+    font-weight: 400;
+    text-align: center !important;
+}
+
+.logoinstall h1 span {
+    color: rgba(11, 117, 178, 1.0);
+    text-shadow: 1px 1px #333333;
+}
+
+.logoinstall h3 {
+    color: #222;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ccc;
+    font-size: 36px;
+    font-weight: 400;
+    margin-top: -21px;
+}
+
+#box1_install {
+    margin: 0 auto;
+    text-align: left;
+    width: 400px;
+}
+
+#installbutton {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#box1_install a.button, #installbutton input[type=submit] {
+    width: 200px;
+    text-align: center;
+}
+
+#box2_install {
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
