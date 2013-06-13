@@ -11,13 +11,6 @@
     src: url(fonts/lobster.woff) format('woff');
 }
 
-@font-face {
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 400;
-    src: url(fonts/ubuntu.woff) format('woff');
-}
-
 
 /*********************************************
  * GLOBAL STYLES
@@ -55,7 +48,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #222;
-  font-family: "Ubuntu", Impact, sans-serif;
+  font-family: "Century Gothic", sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-shadow: 0px 0px 6px rgba(255,255,255, 0.2); }

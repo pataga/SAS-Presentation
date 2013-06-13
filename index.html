@@ -1,217 +1,390 @@
 <!DOCTYPE html>
 <html lang="de">
 
-	<head>
-		<meta charset="utf-8">
-		<title>SAS Präsentation</title>
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<!-- Titelfolie BEGIN-->
-				<section>
-					<h1>Server <span>Admin</span> System</h1>
-					<h3 class="title">Linux-Server Web-Verwaltungsoberfläche</h3>
-					<p>
-						<small>Patrick Farnkopf &middot; Tanja Weiser &middot; Gabriel Wanzek</small>
-					</p>
-					<aside class="notes">
-						Hotkeys:	
-						[ESC] für Übersicht<br>
-						[S] für Präsentationsstart<br>
-						[Pfeiltasten] für Navigation<br>
-						[Alt] + LMT an Ort zum Zoomen<br>
-					</aside>
-				</section>
-				<!-- Titelfolie END-->
-				<!-- Inhalt BEGIN-->
-				<section>
-					<h2>Inhalt</h2>
-						<ol>
-							<li>Das Projekt</li>
-							<li>Funktionsumfang</li>
-							<li>Seitendarstellung</li>
-							<li>Userinterface</li>
-							<li>Module</li>
-							<li>Problematiken</li>
-							<li>Verbindungen</li>
-							<li>SASDaemon</li>
-							<li>Das Projekt in Zahlen</li>
-							<li>Schlusswort</li>
-						</ol>
-					<aside class="notes">
-						<!-- Notizen -->
-					</aside>
-				</section>
-				<!-- Inhalt END-->
-				<!-- Das Projekt BEGIN-->
-				<section>
-					<h2>Das Projekt</h2>
+    <head>
+        <meta charset="utf-8">
+        <title>SAS Präsentation</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <style>
+            /* size adjustment */
+            .reveal .progress {height: 8px;}
+            .reveal h2 {font-size: 2.11em;}
+            .controls.slide-number {font-size: 1.0em;}
+            section .smallertext small {font-size: 0.7em}
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Server <span>Admin</span> System</h1>
+                    <h3 class="title">Linux-Server Web-Verwaltungsoberfläche</h3>
+                    <p>
+                        <small>Patrick Farnkopf &middot; Tanja Weiser &middot; Gabriel Wanzek</small>
+                    </p>
+                    <aside class="notes">
+                        <b>Hotkeys</b>
+                        [ESC] für Übersicht<br>
+                        [S] für Präsentationsstart<br>
+                        [Pfeiltasten] für Navigation<br>
+                        [Alt] + LMT an Ort zum Zoomen<br>
+                    </aside>
+                </section>
+                <section>
+                    <h2>Inhalt</h2>
+                    <br>
+                    <ol>
+                        <li>Das Projekt</li>
+                        <li>Funktionsumfang</li>
+                        <li>Seitendarstellung</li>
+                        <li>Userinterface</li>
+                        <li>Module</li>
+                        <li>Problematiken</li>
+                        <li>Verbindungen</li>
+                        <li>SASDaemon</li>
+                        <li>Das Projekt in Zahlen</li>
+                        <li>Schlusswort</li>
+                    </ol>
+                    <aside class="notes">
+                        <!-- Notizen -->
+                    </aside>
+                </section>
+                <section>
+                    <h2>Das Projekt</h2>
+                    <br>
+                    <div style="text-align:left;">Eine Web-Verwaltungsoberfläche für Linux Server<br>
+                        <br>
+                        Nach modernsten Standards entwickelt<br>
+                        <br>
+                        PHP5, SQL, Shellscript<br>HTML5, CSS3, Javascript, jQuery</div> 
+                    <aside class="notes">
+                        <!-- Notizen -->
+                    </aside>
 
-					<aside class="notes">
-						<!-- Notizen -->
-					</aside>
-				</section>
-				<!-- Das Projekt END-->
-				<!-- Funktionsumfang BEGIN-->
-				<section>
-					<h2>Funktionsumfang</h2>
+                </section>
+                <section>
+                    <h2>Funktionsumfang</h2>
+                    <br>
+                    <div style="line-height:1.35;">
+                        <ul>
+                            <li>Konfiguration per Client</li>
+                            <li>einfache Installationsroutine</li>
+                            <li>Benutzerlogin</li>
+                            <li>Verwalten von mehreren Servern</li>
+                            <li>Module zu unterschiedlichen Diensten</li>
+                            <li>Konfigurationsdateien</li>
+                            <li>Mehrere Benutzer</li>
+                            <li>Informationsangaben</li>
+                            <li>Plugin-System</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        <!-- Notizen -->
+                    </aside>
+                </section>
+                <section>
+                    <h2>Seitendarstellung</h2>
+                    <div style="line-height:2.0;">
+                        <br>
+                        <ul>
+                            <li>XML-Datei zur Menüdarstellung</li>
+                            <li>dynamische und statische Elemente</li>
+                            <li>3 Dateien: Top - Seiteninhalt - Footer</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        <!-- Notizen -->
+                    </aside>
+                </section>
+                <section style="height:100%;background-image: url(img/home.png); background-size: cover; box-shadow: 0px 7px 12px -4px #000">
+                </section>
+                <section>
+                    <h2>Userinterface</h2>
+                    <div style="line-height:1.7;">
+                        <br>
+                        <ul>
+                            <li>modularer Aufbau</li>
+                            <li>Menüs mit 2 Ebenen</li>
+                            <li>einheitliche und übersichtliche Darstellung</li>
+                            <li>dynamische Elemente</li>
+                            <li>Ausgabe von Systeminformationen</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        <!-- Notizen -->
+                    </aside>
+                </section>
+                <section>
+                    <section>
+                        <h1 style="color:#222;font-size:4em;">Module</h1>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Home</b></h2>
+                    <div style="line-height:1.7;">
+                        <br>
+                        <ul>
+                            <li>Übersicht wichtiger Serverdaten</li>
+                            <li>Status von Server-Diensten</li>
+                            <li>gemeinsames Notizbuch für alle Benutzer</li>
+                            <li>Ausgabe von Systeminformationen</li>
+                            <li>Wichtige Informationen zu SAS</li>
+                        </ul>
+                    </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Apache</b></h2>
+                        <div style="line-height:1.7;">
+                            <b>meistbenutzter Webserver im Internet</b>
+                            <br><br>
+                            <ul>
+                                <li>Installation und Steuerung</li>
+                                <li>Übersicht des Dienstes</li>
+                                <li>Verzeichnisdirektiven bearbeiten</li>
+                                <li>Apache Module aktivieren/deaktivieren</li>
+                                <li>PHP installieren/konfigurieren</li>
+                                <li>PHP-Informationen einsehen</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>ProFTPD</b></h2>
+                        <div style="line-height:1.7;">
+                            <b>Dateiübertragung zwischen Server und Client</b>
+                            <br><br>
+                            <ul>
+                                <li>Übersicht des FTP-Servers</li>
+                                <li>Konfiguration</li>
+                                <li>Steuerung</li>
+                                <li>Statistiken</li>
+                                <li>Informationsangaben</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>MySQL</b></h2>
+                        <div style="line-height:1.5;font-size:85%">
+                            <b>am weitesten verbreitetes Datenbankmanagementsystem</b>
+                            <br><br>
+                            <ul>
+                                <li>liefert wichtige Funktionen für den Zugriff auf MySQL-Datenbanken</li>
+                                <li>Übersicht und Steuerung des Dienstes</li>
+                                <li>Datenbank-Verwaltung (Datensätze bearbeiten/löschen)</li>
+                                <li>Exportieren/Importieren von Datensätzen</li>
+                                <li>MySQL-Konsole</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Samba</b></h2>
+                        <div style="line-height:2.0;">
+                            <b>Datenaustausch im Netzwerk</b>
+                            <br><br>
+                            <ul>
+                                <li>einfache Erstellung von Freigaben</li>
+                                <li>einfache Handhabung der Benutzerverwaltung</li>
+                                <li>Übersicht und Steuerung des Dienstes</li>
+                                <li>Benutzerverwaltung</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Logs</b></h2>
+                        <div style="line-height:2.0;">
+                            <b>System- und Dienstprotokolle des Servers</b>
+                            <br><br>
+                            <ul>
+                                <li>optimale Darstellung von Logs im Browser</li>
+                                <li>Boot- und Systemmeldungen</li>
+                                <li>Apache- und MySQL-Logs</li>
+                                <li>Authentifizierungen</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>System</b></h2>
+                        <div style="line-height:1.4;font-size:85%" class="smallertext">
+                            <b>Linuxeigene Systemsteuerung</b>
+                            <br><br>
+                            <ul>
+                                <li>einfache Konsole <i>(für Profis geeignet)</i></li>
+                                <li>Verwaltung von Benutzern und Gruppen</li>
+                                <li>einfache Einrichtung von Cronjobs<br><small>(zeitgesteuerte Aufgaben des Servers)</small></li>
+                                <li>Taskmanager<br><small>(Verwaltung von Prozessen mit vielen Informationen)</small></li>
+                                <li>Paketverwaltung<br><small>(Installation und Deinstallation und Suche von Paketen)</small></li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Tools</b></h2>
+                        <div style="line-height:1.5;">
+                            <b>Server- und Netzwerkinformationen</b>
+                            <br>
+                            <ul>
+                                <li><b>Informationen</b></li>
+                                <ul  style="line-height:1.0;">
+                                    <li>Festplatten</li>
+                                    <li>Arbeitsspeicher</li>
+                                    <li>Hardware</li>
+                                </ul>
+                                <li><b>Netzwerktools</b></li>
+                                <ul  style="line-height:1.0;">
+                                    <li>Netzwerkinformationen anzeigen</li>
+                                    <li>Ping, Traceroute, Whois</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Webuser</b></h2>
+                        <div style="line-height:1.6;">
+                            <b>Benutzerverwaltung des Server Admin Systems</b>
+                            <br><br>
+                            <ul>
+                                <li>Übersichtsseite</li>
+                                <li>Benutzer hinzufügen/bearbeiten</li>
+                                <li>Zugang zu mehreren Servern möglich</li>
+                                <li>Zugriff auf verschiedene Dienste regeln</li>
+                                <li>keine zusätzlichen SSH Benutzer nötig</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Modul: <b>Plugins</b></h2>
+                        <br>
+                        <div style="">
+                            <ul>
+                                <li>Schnittstelle zur Erweiterung von SAS</li>
+                                <li>stellt eine Script-Engine zur Verfügung</li>
+                                <li>stellt ein Template-System zur Verfügung</li>
+                                <li>automatische Installation</li>
+                                <li>Plugin wird von einer Git-Repository heruntergeladen</li>
+                                <li>Update- und Lösch-Funktion</li>
+                                <li>Beispiel Addons wurden von uns bereits geschrieben</li>
+                                <ul style="font-size:0.8em">
+                                    <li>Minecraft-Plugin (Autor: Gabriel Wanzek)</li>
+                                    <li>AdminLog-Plugin (Autor: Patrick Farnkopf)</li>
+                                    <li>HelloWorld-Plugin (Autor: Patrick Farnkopf)</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </section>  
+                </section>
 
-					<aside class="notes">
-						<!-- Notizen -->
-					</aside>
-				</section>
-				<!-- Funktionsumfang END-->
-				<!-- Seitendarstellung BEGIN-->
-				<section>
-					<h2>Seitendarstellung</h2>
+                <section>
+                    <h2>Problematiken</h2>
+                    <br>
+                    <div>
+                        <ul>
+                            <li>Verbindung zwischen Websystem und Server</li>
+                            <li>Shell Kommandos, die zusätzliche Eingaben erfordern</li>
+                            <li>Performance beim Ausführen der Befehle</li>
+                            <li>Passende Programmiersprache für den Daemon</li>
+                        </ul>
+                    </div>
+                </section>
 
-					<aside class="notes">
-						<!-- Notizen -->
-					</aside>
-				</section>
-				<!-- Seitendarstellung END-->
-				<!-- Userinterface BEGIN-->
-				<section>
-					<h2>Userinterface</h2>
+                <section>
+                    <h2>Verbindungen</h2>
+                    <div>
+                        <b>zwei Verbindungsmöglichkeiten</b><br><br>
+                        <ul>
+                            <li>SSH (Root-SSH Zugriff wird benötigt)</li>
+                            <ul style="font-size:0.8em">
+                                <li>Komfortabel einzurichten</li>
+                                <li>reduzierter SAS-Support</li>
+                                <li>geringe Sicherheit</li>
+                            </ul>
+                            <li>SOAP (Daemon muss als Root-User laufen)</li>
+                            <ul style="font-size:0.8em">
+                                <li>komplexe Installation</li>
+                                <li>vollständiger SAS-Support</li>
+                                <li>hohe Sicherheit</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </section>
 
-					<aside class="notes">
-						<!-- Notizen -->
-					</aside>
-				</section>
-				<!-- Userinterface END-->
-				<!-- Module BEGIN-->
-				<section>
-					<section>
-						<h2>Module</h2>
-						
-						
-					</section>
-					<section>
-						<h2>Modul: <b>Home</b></h2>
+                <section>
+                    <h2>SASDaemon</h2>
+                    <div  style="font-size:0.8em">
+                        <ul>
+                            <li>eigenständiges Programm, welches auf den Servern läuft</li>
+                            <li>nimmt Anweisungen von SAS an, verarbeitet sie und sendet Antwort</li>
+                            <li>ursprünglich Realisierung in Java geplant</li>
+                            <li>Rebase auf C++ aus Performance-Gründen</li>
+                            <li>C++ zu komplex deshalb Umstieg auf Ruby 1.8</li>
+                            <li>Bedient sich dem SOAP zur Kommunikation</li>
+                            <li>Sicherheit durch Authentifizierung</li>
+                            <li>Schlüssel mittels OpenSSL und Base64 generiert</li>
+                            <li>Anfragen über IP-Adresse abgesichert</li>
+                        </ul>
+                    </div>
+                </section>
 
-					</section>
-					<section>
-						<h2>Modul: <b>Apache</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>ProFTPD</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>MySQL</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>Samba</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>Logs</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>System</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>Tools</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>Webuser</b></h2>
-						
-					</section>
-					<section>
-						<h2>Modul: <b>Plugins</b></h2>
-						
-					</section>	
-				</section>
+                <section>
+                    <h2>Das Projekt in Zahlen</h2>
+                    <div  style="font-size:0.8em">
+                        <ul>
+                            <li>über 15000 Zeilen Code in 10 verschiedenen Darstellungs- und Programmiersprachen</li>
+                            <li>603 Commits (Änderungen an der Software)</li>
+                            <li>Durchschnittlich 3 Commits pro Tag</li>
+                            <li>aktuelle Version: 1.1 Alpha</li>
+                            <li>232 Dateien</li>
+                            <li>Durchschnittliche Dateigröße:  21 kB</li>
+                            <li>Beginn der Entwicklung: 28.09.2012</li>
+                        </ul>
+                    </div>
+                </section>
 
-				<section>
-					<h2>Problematiken</h2>
-					<p>
-						
-					</p>
-				</section>
+                <section>
+                    <h2>Schlusswort</h2>
+                    <p>
 
-				<section>
-					<h2>Verbindungen</h2>
-					<p>
-						
-					</p>
-				</section>
+                    </p>
+                </section>
 
-				<section>
-					<h2>SASDaemon</h2>
-					<p>
-						
-					</p>
-				</section>
+                <section>
+                    <h1>Ende</h1>
+                    <p>Die Präsentation ist nun fertig.</p>
+                </section>
 
-				<section>
-					<h2>SASDaemon</h2>
-					<p>
-						
-					</p>
-				</section>
+            </div>
+        </div>
 
-				<section>
-					<h2>Das Projekt in Zahlen</h2>
-					<p>
-						
-					</p>
-				</section>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+        <script src="lib/js/jquery.js"></script>
+        <script>
 
-				<section>
-					<h2>Schlusswort</h2>
-					<p>
-						
-					</p>
-				</section>
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-				<section>
-					<h1>Ende</h1>
-					<p>Die Präsentation ist nun fertig.</p>
-				</section>
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
 
-			</div>
-		</div>
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    // { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
-
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					// { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					// { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-
-	</body>
+        </script>
+        <script>
+            function currentPageFormatter(event){var formattedStr;if(event.indexh===0)return"";formattedStr=event.indexh;if(event.indexv)formattedStr+="."+event.indexv;return formattedStr}Reveal.addEventListener("ready",function(event){$('<aside class="controls slide-number" style="font-family:\'Century Gothic\', sans-serif;font-weight:300;display: block; left: 10px; right: initial;bottom: -30px; text-align: center; opacity: 0.5;"></aside>').text(currentPageFormatter(event)).appendTo(".reveal.center")});Reveal.addEventListener("slidechanged",function(event){$(".slide-number").text(currentPageFormatter(event))});
+        </script>
+    </body>
 </html>
