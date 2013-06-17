@@ -1,0 +1,6 @@
+
+/var/gitdata/SAS-HelloWorld-Plugin
+
+/var/gitdata/sas-mc-plugin
+
+/var/gitdata/AdminLog
